@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* ตั้งค่าพื้นหลังและดีไซน์ภาพรวม */
+        /* ตั้งค่าพื้นหลังและฟอนต์ให้ดูนุ่มนวล */
         body {
             font-family: 'Kanit', 'Chula', sans-serif;
             background-color: #f0f8ff; /* สีฟ้าพาสเทลอ่อน */
@@ -16,38 +16,6 @@
             min-height: 100vh;
             margin: 0;
             color: #555;
-        }
-
-        /* ตกแต่งหัวข้อชื่อของคุณด้านบน */
-        .header-title {
-            color: #ff6b81; /* สีชมพูเข้มเด่นชัด แต่ยังคงโทนน่ารัก */
-            background-color: #ffffff;
-            padding: 15px 30px;
-            border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            font-size: 24px;
-            text-align: center;
-            border: 2px solid #ffe4e1;
-        }
-
-        /* ตกแต่งลิงก์เมนู */
-        .nav-link {
-            display: inline-block;
-            background-color: #87cefa; /* สีฟ้าพาสเทล */
-            color: white;
-            text-decoration: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .nav-link:hover {
-            background-color: #64b5f6;
-            transform: translateY(-2px);
         }
 
         /* ตกแต่งฟอร์มกรอกข้อมูล */
@@ -82,7 +50,7 @@
         }
 
         input[type="number"]:focus {
-            border-color: #87cefa;
+            border-color: #87cefa; /* เปลี่ยนเป็นสีฟ้าเวลาคลิก */
         }
 
         input[type="submit"] {
@@ -100,23 +68,25 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #ff91a4;
+            background-color: #16070a; /* สีชมพูเข้มขึ้นเล็กน้อยเวลาเมาส์ชี้ */
             transform: scale(1.03);
         }
 
-        /* กรอบครอบแม่สูตรคูณ (For Loop) */
+        /* กรอบครอบแม่สูตรคูณสุดน่ารัก */
         .result-box {
             background-color: #ffffff;
-            border: 4px dashed #ffb6c1; /* รอบนี้ใช้กรอบเส้นประสีชมพูพาสเทลให้สลับกันกับอีกไฟล์ */
+            border: 4px dashed #87cefa; /* กรอบเส้นประสีฟ้าพาสเทลสุดคิ้วท์ */
             border-radius: 25px;
             padding: 30px;
             width: 300px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.05);
             text-align: center;
+            position: relative;
         }
 
+        /* ตกแต่งหัวข้อสูตรคูณ */
         .result-box h2 {
-            color: #87cefa; /* หัวข้อสีฟ้า */
+            color: #ffb6c1; /* หัวข้อสีชมพู */
             margin-top: 0;
             margin-bottom: 20px;
             border-bottom: 2px dotted #ffe4e1;
@@ -124,6 +94,7 @@
             font-size: 22px;
         }
 
+        /* ตกแต่งตัวเลขสตรีมสูตรคูณ */
         .multiplication-line {
             font-size: 18px;
             line-height: 1.8;
@@ -132,16 +103,10 @@
         }
     </style>
 </head>
-<body> 
-
-    <?php 
-    echo "<div class='header-title'>W1- Sarocha BIT 2/3 NO.28</div>";
-    ?>
-
-    <a class="nav-link" href="while.php">✨ Go to While Loop</a>
+<body>
 
     <form action="" method="GET">
-        <label for="num">เลขแม่สูตรคูณ (For Loop)</label>
+        <label for="num">เลขแม่สูตรคูณ</label>
         <input type="number" name="num" id="num" required>
         <input type="submit" value="คำนวณ">
     </form>
@@ -149,19 +114,21 @@
     <?php
     if(isset($_GET["num"])){
         $num = ($_GET["num"]);
-
-        // เปิดกล่องครอบผลลัพธ์
+        
+        // เปิดกล่องครอบดีไซน์น่ารัก
         echo "<div class='result-box'>";
-        echo "<h2>สูตรคูณแม่ ".$num. "</h2>";
-
-        for($i = 1; $i <= 12; $i++){
-            // จัดการบรรทัดสูตรคูณให้สวยงามด้วยคลาสพาสเทล
+        echo "<h2>สูตรคูณแม่ " .$num. "</h2>";
+        
+        $i = 1;
+        while ($i <= 12){
+            // ใส่ class เพื่อจัดระเบียบตัวอักษรข้างใน
             echo "<div class='multiplication-line'>" . $num . " x " . $i . " = " . ($num * $i) . "</div>";
+            $i++;
         }
         
-        // ปิดกล่องครอบผลลัพธ์
+        // ปิดกล่องครอบ
         echo "</div>";
-    } 
+    }
     ?>
 
 </body>
